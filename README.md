@@ -4,14 +4,14 @@ News app based on RSS feeds
 
 ## Installation
 
-Prerequisite
+### Prerequisite
 
 - make [link](https://github.com/wkusnierczyk/make)
 - podman [link](https://github.com/containers/podman)
 - nodejs [link](https://github.com/nodejs/node)
 - go [link](https://github.com/golang/go)
 
-Environment
+### Environment
 
 Setup a file called `.env` in the root directory with the following content:
 
@@ -23,10 +23,13 @@ BASIC_USER=user
 BASIC_PASSWORD=password
 ```
 
-Start the dev server
+**Use different values for production**
+
+### Start the dev server
 
 - Clone this repo
 - Run `make fe_install`
 - Run `make fe_dev`
+- Open a new terminal
 - Run `make postgres_run`
-- Run `make be_dev` in a second terminal
+- Run `make be_dev`
