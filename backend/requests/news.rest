@@ -1,0 +1,71 @@
+# REST Client file
+# https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+
+GET http://localhost:4000/news
+
+###
+GET http://localhost:4000/news?limit=3
+
+###
+GET http://localhost:4000/news?limit=5&offset=1
+
+###
+GET http://localhost:4000/news?limit=5&offset=2
+
+###
+POST http://localhost:4000/news HTTP/1.1
+Authorization: Basic user:password
+content-type: application/json
+
+{
+    "url": "https://www.cash.ch/feeds/latest/news",
+    "title": "Aktien Schweiz Schluss: SMI nicht zuletzt wegen Nestlé wenig bewegt",
+    "link": "https://www.cash.ch/news/top-news/aktien-schweiz-schluss-smi-nicht-zuletzt-wegen-nestle-wenig-bewegt-595597",
+    "description": "Aktienmärkte - Der Schweizer Aktienmarkt hat sich am Montag kaum von der Stelle bewegt. Der Leitindex SMI bewegte sich über weite Strecken hinweg nahe der Nulllinie in einer Spanne von rund 50 Punkten.",
+    "pubDate": "Mon, 24 Apr 2023 21:13:08 +0200",
+    "guid": "https://www.cash.ch/node/572434",
+    "pubDate": "Mon, 24 Apr 2023 21:13:08 +0200",
+    "enclosureUrl": "https://www.cash.ch/fp/1200/675/2016/1512/sites/default/files/images/library/six_boerse_schweiz_zuerich_aktien_4.jpg",
+    "enclosureType": "image/jpeg",
+    "enclosureLength": 2160988,
+    "categoryText": "News"
+}
+
+###
+PUT http://localhost:4000/news/3 HTTP/1.1
+Authorization: Basic user:password
+content-type: application/json
+
+{
+    "url": "https://www.cash.ch/feeds/latest/news",
+    "title": "Aktien Schweiz Schluss: SMI nicht zuletzt wegen Nestlé wenig bewegt",
+    "link": "https://www.cash.ch/news/top-news/aktien-schweiz-schluss-smi-nicht-zuletzt-wegen-nestle-wenig-bewegt-595597",
+    "description": "Aktienmärkte - Der Schweizer Aktienmarkt hat sich am Montag kaum von der Stelle bewegt. Der Leitindex SMI bewegte sich über weite Strecken hinweg nahe der Nulllinie in einer Spanne von rund 50 Punkten.",
+    "pubDate": "Mon, 24 Apr 2023 21:13:08 +0200",
+    "guid": "https://www.cash.ch/node/572434",
+    "pubDate": "Mon, 24 Apr 2023 21:13:08 +0200",
+    "enclosureUrl": "https://www.cash.ch/fp/1200/675/2016/1512/sites/default/files/images/library/six_boerse_schweiz_zuerich_aktien_4.jpg",
+    "enclosureType": "image/jpeg",
+    "enclosureLength": 2160988,
+    "categoryText": "Top News"
+}
+
+### Bad password
+PUT http://localhost:4000/news/3 HTTP/1.1
+Authorization: Basic user:password1
+content-type: application/json
+
+{
+    "url": "https://www.example.com/example287",
+    "title": "example title",
+    "link": "example link xxx  aaa",
+    "description": "this is new"
+}
+
+###
+DELETE  http://localhost:4000/news/9987 HTTP/1.1
+Authorization: Basic user:password
+
+###
+DELETE  http://localhost:4000/news_drop HTTP/1.1
+Authorization: Basic user:password

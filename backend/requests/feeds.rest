@@ -1,0 +1,61 @@
+# REST Client file
+# https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+
+GET http://localhost:4000/feeds
+
+###
+GET http://localhost:4000/feeds?limit=3
+
+###
+GET http://localhost:4000/feeds?limit=15&offset=1
+
+###
+GET http://localhost:4000/feeds?limit=5&offset=2
+
+###
+POST http://localhost:4000/feeds HTTP/1.1
+Authorization: Basic user:password
+content-type: application/json
+
+{
+    "url": "https://www.cash.ch/feeds/latest/news",
+    "title": "cash - \"aktuell\" | news",
+    "link": "https://www.cash.ch/feeds/latest/new",
+    "description": "cash - \"aktuell\" | news",
+    "language": "de",
+    "imageurl": "https://www.cash.ch/sites/default/files/media/field_image/2022-08/cash_favicon_96x96.png",
+    "imagetitle": "cash - \"aktuell\" | news",
+    "imagelink": "https://www.cash.ch/feeds/latest/new",
+    "imagewidth": 96,
+    "imageheight": 96,
+    "imagedescription": "",
+    "pubdate": "mon, 24 apr 2023 21:13:08 +0200"
+}
+
+###
+PUT http://localhost:4000/feeds/3 HTTP/1.1
+Authorization: Basic user:password
+content-type: application/json
+
+{
+    "url": "https://www.cash.ch/feeds/latest/news",
+    "title": "cash - \"aktuell\" | news",
+    "link": "https://www.cash.ch/feeds/latest/new",
+    "description": "cash - \"aktuell\" | news",
+    "language": "de",
+    "imageurl": "https://www.cash.ch/sites/default/files/media/field_image/2022-08/cash_favicon_96x96.png",
+    "imagetitle": "cash - \"aktuell\" | news",
+    "imagelink": "https://www.cash.ch/feeds/latest/new",
+    "imagewidth": 96,
+    "imageheight": 96,
+    "imagedescription": "",
+    "pubdate": "mon, 24 apr 2023 21:13:08 +0200"
+}
+
+###
+DELETE  http://localhost:4000/feeds/9 HTTP/1.1
+Authorization: Basic user:password
+
+###
+DELETE  http://localhost:4000/feeds_drop HTTP/1.1
+Authorization: Basic user:password
