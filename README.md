@@ -16,11 +16,11 @@ Environment
 Setup a file called `.env` in the root directory with the following content:
 
 ```
-POSTGRES_PASSWORD=<value>
-POSTGRES_PORT=<value>
-POSTGRES_DB_NAME=<value>
-BASIC_USER=<value>
-BASIC_PASSWORD=<value>
+POSTGRES_PASSWORD=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB_NAME=postgres
+BASIC_USER=user
+BASIC_PASSWORD=password
 ```
 
 Start the dev server
@@ -28,4 +28,5 @@ Start the dev server
 - Clone this repo
 - Run `make fe_install`
 - Run `make fe_dev`
+- Run `make postgres_run`
 - Run `make be_dev` in a second terminal
