@@ -18,7 +18,7 @@ Authorization: Basic user:password
 content-type: application/json
 
 {
-    "url": "https://www.cash.ch/feeds/latest/news",
+    "url": "https://www.cash.ch/feeds/latest/news2",
     "title": "cash - \"aktuell\" | news",
     "link": "https://www.cash.ch/feeds/latest/new",
     "description": "cash - \"aktuell\" | news",

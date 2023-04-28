@@ -18,13 +18,13 @@ type News struct {
 	Link            string
 	Description     string
 	Author          string
-	CategoryDomain  string
-	CategoryText    string
+	Category        string
 	Comments        string
 	EnclosureUrl    string
 	EnclosureLength uint
 	EnclosureType   string
-	Guid            string
+	GuidUrl         string
+	GuidIsPermaLink string
 	SourceUrl       string
 	SourceText      string
 	PubDate         string

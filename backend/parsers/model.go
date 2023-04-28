@@ -27,15 +27,6 @@ type Channel struct {
 	Items          []Item     `xml:"item"`
 }
 
-type Content struct {
-	Expression string `xml:"expression,attr"`
-	Height     uint   `xml:"height,attr"`
-	Medium     string `xml:"medium,attr"`
-	Type       string `xml:"type,attr"`
-	Url        string `xml:"url,attr"`
-	Width      uint   `xml:"width,attr"`
-}
-
 type Cloud struct {
 	Domain            string `xml:"domain,attr"`
 	Port              uint   `xml:"port,attr"`
@@ -51,26 +42,28 @@ type TextInput struct {
 	Link        string `xml:"link"`
 }
 
-type Group struct {
-	Content []Content `xml:"content"`
+type Source struct {
+	Url      string `xml:"url,attr"`
+	CharData string `xml:",chardata"`
 }
 
 type Guid struct {
-	IsPermaLink bool   `xml:"isPermaLink,attr"`
+	IsPermaLink string `xml:"isPermaLink,attr"`
 	CharData    string `xml:",chardata"`
 }
 
 type Item struct {
-	Category    Category  `xml:"category"`
-	Content     Content   `xml:"content"`
-	Description string    `xml:"description"`
-	Enclosure   Enclosure `xml:"enclosure"`
-	Encoded     string    `xml:"encoded"`
-	Group       Group     `xml:"group"`
-	Guid        Guid      `xml:"guid"`
-	Link        string    `xml:"link"`
-	PubDate     string    `xml:"pubDate"`
-	Title       string    `xml:"title"`
+	Category    []Category `xml:"category"`
+	Description string     `xml:"description"`
+	Author      string     `xml:"author"`
+	Comments    string     `xml:"comments"`
+	Enclosure   Enclosure  `xml:"enclosure"`
+	Encoded     string     `xml:"encoded"`
+	Guid        Guid       `xml:"guid"`
+	Source      Source     `xml:"source"`
+	Link        string     `xml:"link"`
+	PubDate     string     `xml:"pubDate"`
+	Title       string     `xml:"title"`
 }
 
 type Category struct {

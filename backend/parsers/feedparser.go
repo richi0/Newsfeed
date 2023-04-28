@@ -42,7 +42,23 @@ func ParseFeed(data []byte) (*models.Feed, []*models.News) {
 	xml.Unmarshal(data, &rss)
 	news := make([]*models.News, 0)
 	for _, item := range rss.Channel.Items {
-		news = append(news, &models.News{Title: item.Title})
+		newsItem := &models.News{
+			Title:           item.Title,
+			Link:            item.Link,
+			Description:     item.Description,
+			PubDate:         item.PubDate,
+			Category:        getCategoryString(item.Category),
+			Author:          item.Author,
+			Comments:        item.Comments,
+			EnclosureUrl:    item.Enclosure.Url,
+			EnclosureLength: item.Enclosure.Length,
+			EnclosureType:   item.Enclosure.Type,
+			GuidUrl:         item.Guid.CharData,
+			GuidIsPermaLink: item.Guid.IsPermaLink,
+			SourceUrl:       item.Source.Url,
+			SourceText:      item.Source.CharData,
+		}
+		news = append(news, newsItem)
 	}
 	feed := &models.Feed{
 		Title:                  rss.Channel.Title,
