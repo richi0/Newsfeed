@@ -28,7 +28,7 @@ type Feed struct {
 	Generator              string
 	Docs                   string
 	CloudDomain            string
-	CloudPort              string
+	CloudPort              uint
 	CloudPath              string
 	CloudRegisterProcedure string
 	CloudProtocol          string

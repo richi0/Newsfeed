@@ -1,19 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:og="http://ogp.me/ns#" version="2.0">
+<rss xmlns:atom="http://www.w3.org/2005/Atom"
+   xmlns:content="http://purl.org/rss/1.0/modules/content/"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:og="http://ogp.me/ns#" version="2.0">
    <channel>
       <title>Cash - "Aktuell" | News</title>
       <link>https://www.cash.ch/feeds/latest/news</link>
       <description>Cash - "Aktuell" | News</description>
       <language>de</language>
-      <pubDate>Thu, 27 Apr 2023 18:29:56 +0200</pubDate>
       <copyright>Cash - Ringier Axel Springer Schweiz AG</copyright>
+      <pubDate>Thu, 27 Apr 2023 18:29:56 +0200</pubDate>
+      <lastBuildDate>Thu, 27 Apr 2023 18:29:56 +0200</lastBuildDate>
+      <category domain="http://www.cash.com/c1">C1</category>
+      <docs>https://www.rssboard.org/rss-specification</docs>
+      <ttl>60</ttl>
       <image>
          <title>Cash - "Aktuell" | News</title>
          <link>https://www.cash.ch/feeds/latest/news</link>
          <url>https://www.cash.ch/sites/default/files/media/field_image/2022-08/cash_favicon_96x96.png</url>
          <width>96</width>
-         <height>96</height>
+         <description>Cash Image</description>
       </image>
+      <rating>Rating</rating>
+      <skipHours>
+         <hour>3</hour>
+      </skipHours>
       <item>
          <title>Börsen-Ticker :  SMI schlägt Seitwärts-Kurs ein</title>
          <link>https://www.cash.ch/news/top-news/borsen-ticker-smi-schlagt-seitwarts-kurs-ein-596719</link>
