@@ -18,7 +18,7 @@ Authorization: Basic user:password
 content-type: application/json
 
 {
-    "url": "https://www.cash.ch/feeds/latest/news2",
+    "url": "https://www.cash.ch/feeds/latest/news5",
     "title": "cash - \"aktuell\" | news",
     "link": "https://www.cash.ch/feeds/latest/new",
     "description": "cash - \"aktuell\" | news",
@@ -31,6 +31,31 @@ content-type: application/json
     "imagedescription": "",
     "pubdate": "mon, 24 apr 2023 21:13:08 +0200"
 }
+
+###
+POST http://localhost:4000/feeds HTTP/1.1
+Authorization: Basic user:password
+content-type: application/json
+
+{
+    "url": ""
+}
+
+###
+post http://localhost:4000/feeds/create_by_url?url=http%3a%2f%2frss.cnn.com%2frss%2fedition_world.rss http/1.1
+authorization: basic user:password
+content-type: application/json
+
+###
+post http://localhost:4000/feeds/create_by_url?url=https%3A%2F%2Fwww.cash.ch%2Ffeeds%2Flatest%2Ftop-news
+authorization: basic user:password
+content-type: application/json
+
+
+###
+POST http://localhost:4000/feeds/create_by_url HTTP/1.1
+Authorization: Basic user:password
+content-type: application/json
 
 ###
 PUT http://localhost:4000/feeds/3 HTTP/1.1
@@ -53,7 +78,7 @@ content-type: application/json
 }
 
 ###
-DELETE  http://localhost:4000/feeds/9 HTTP/1.1
+DELETE  http://localhost:4000/feeds/2 HTTP/1.1
 Authorization: Basic user:password
 
 ###

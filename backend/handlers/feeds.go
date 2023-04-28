@@ -2,9 +2,11 @@ package handlers
 
 import (
 	"fmt"
+	"io/ioutil"
 	"net/http"
 	"newsfeed/config"
 	"newsfeed/models"
+	"newsfeed/parsers"
 	"strconv"
 
 	"github.com/julienschmidt/httprouter"
@@ -25,7 +27,37 @@ func (f *FeedHandlers) Create(w http.ResponseWriter, r *http.Request, _ httprout
 	if err != nil {
 		return
 	}
-	dbFeed := f.data.Feeds.Create(&feed)
+	dbFeed, err := f.data.Feeds.Create(&feed)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	writeJson(w, dbFeed)
+}
+
+func (f *FeedHandlers) CreateByFeedUrl(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+	url := getQueryParamString("url", r)
+	if url == "" {
+		http.Error(w, "feed url not provided", http.StatusInternalServerError)
+		return
+	}
+	res, err := http.Get(url)
+	if err != nil {
+		http.Error(w, fmt.Sprintf("feed fetch failed. %s", err), http.StatusInternalServerError)
+		return
+	}
+	content, err := ioutil.ReadAll(res.Body)
+	if err != nil {
+		http.Error(w, fmt.Sprintf("could not reed feed body. %s", err), http.StatusInternalServerError)
+		return
+	}
+	feed, _ := parsers.ParseFeed(content)
+	feed.Url = url
+	dbFeed, err := f.data.Feeds.Create(feed)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
 	writeJson(w, dbFeed)
 }
 

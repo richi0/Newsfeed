@@ -1,6 +1,7 @@
 package models
 
 import (
+	"errors"
 	"newsfeed/config"
 	"time"
 
@@ -52,17 +53,34 @@ type Feed struct {
 	DeletedAt              gorm.DeletedAt
 }
 
-func (f *FeedModel) Create(feed *Feed) *Feed {
+func (f *FeedModel) Create(feed *Feed) (*Feed, error) {
 	var newFeed Feed
+	url := feed.Url
+	if url == "" {
+		return nil, errors.New("url cannot be empty")
+	}
+	exists := f.ByUrl(url)
+	if exists != nil && exists.Url != "" {
+		return nil, errors.New("url must be unique")
+	}
 	f.app.DB.Create(feed)
 	f.app.DB.First(&newFeed, feed.ID)
-	return &newFeed
+	return &newFeed, nil
 }
 
 func (f *FeedModel) Read(limit int, offset int) []*Feed {
 	var feeds []*Feed
 	f.app.DB.Order("created_at desc").Limit(limit).Offset(offset).Find(&feeds)
 	return feeds
+}
+
+func (f *FeedModel) ByUrl(url string) *Feed {
+	var feed Feed
+	err := f.app.DB.Where("url = ?", url).First(&feed).Error
+	if errors.Is(err, gorm.ErrRecordNotFound) {
+		return nil
+	}
+	return &feed
 }
 
 func (f *FeedModel) Update(feed *Feed) *Feed {

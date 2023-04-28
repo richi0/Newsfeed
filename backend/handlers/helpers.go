@@ -33,3 +33,8 @@ func getQueryParamInt(param string, defaultValue int, r *http.Request) int {
 	}
 	return res
 }
+
+func getQueryParamString(param string, r *http.Request) string {
+	p := r.URL.Query().Get(param)
+	return p
+}

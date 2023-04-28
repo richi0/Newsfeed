@@ -14,6 +14,7 @@ func RegisterRouts(app *config.Application, data *models.Models) *httprouter.Rou
 	router := httprouter.New()
 	router.GET("/feeds", feeds.Read)
 	router.POST("/feeds", middleware.BasicAuth(feeds.Create))
+	router.POST("/feeds/create_by_url", middleware.BasicAuth(feeds.CreateByFeedUrl))
 	router.PUT("/feeds/:id", middleware.BasicAuth(feeds.Update))
 	router.DELETE("/feeds/:id", middleware.BasicAuth(feeds.Remove))
 	router.DELETE("/feeds_drop", middleware.BasicAuth(feeds.Drop))
