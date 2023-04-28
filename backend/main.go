@@ -15,7 +15,6 @@ import (
 )
 
 func main() {
-
 	readEnv("../.env")
 	dsn := fmt.Sprintf("host=localhost user=postgres password=%s dbname=%s port=%s sslmode=disable TimeZone=Europe/Zurich",
 		os.Getenv("POSTGRES_PASSWORD"),

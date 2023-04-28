@@ -4,6 +4,8 @@ POSTGRES_NAME=$(APP_NAME)-postgres
 
 be_dev: postgres_start
 	cd backend;	go run .
+be_test:
+	cd backend;	go test ./... -v
 fe_dev:
 	cd frontend; npm run dev
 fe_install:

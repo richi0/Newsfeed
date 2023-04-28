@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:og="http://ogp.me/ns#" version="2.0">
+   <channel>
+      <title>Cash - "Aktuell" | News</title>
+      <link>https://www.cash.ch/feeds/latest/news</link>
+      <description>Cash - "Aktuell" | News</description>
+      <language>de</language>
+      <pubDate>Thu, 27 Apr 2023 18:29:56 +0200</pubDate>
+      <copyright>Cash - Ringier Axel Springer Schweiz AG</copyright>
+      <image>
+         <title>Cash - "Aktuell" | News</title>
+         <link>https://www.cash.ch/feeds/latest/news</link>
+         <url>https://www.cash.ch/sites/default/files/media/field_image/2022-08/cash_favicon_96x96.png</url>
+         <width>96</width>
+         <height>96</height>
+      </image>
+      <item>
+         <title>Börsen-Ticker :  SMI schlägt Seitwärts-Kurs ein</title>
+         <link>https://www.cash.ch/news/top-news/borsen-ticker-smi-schlagt-seitwarts-kurs-ein-596719</link>
+         <description>+++Märkte+++ - Die Schweizer Börse hat am Donnerstag weder nachgegeben, noch dazu gewonnen.</description>
+         <pubDate>Thu, 27 Apr 2023 06:09:20 +0200</pubDate>
+         <guid>https://www.cash.ch/node/573556</guid>
+         <enclosure url="https://www.cash.ch/fp/1200/675/1910/1089/sites/default/files/images/library/six_boerse_zuerich_aktien.jpg" type="image/jpeg" length="1816035" />
+         <category>News</category>
+      </item>
+      <item>
+         <title>Aktien Schweiz Schluss: Kaum verändert - Warten auf Zentralbanken</title>
+         <link>https://www.cash.ch/borsen-ticker/borsen-kommentar/aktien-schweiz-schluss-kaum-verandert-warten-auf-zentralbanken-597164</link>
+         <description>- Der Schweizer Aktienmarkt hat am Donnerstag nahezu unverändert geschlossen. Dabei bewegte sich der Leitindex SMI bis kurz vor Schluss in einer engen Spanne leicht über dem Vortagesschluss. Doch war der Markt keineswegs homogen. Unter der Oberfläche zeigte sich vielmehr ein uneinheitliches Bild mit Verlierern und Gewinnern. Vor den mit Spannung erwarteten Zinsentscheidungen der US-Notenbank Fed und der Europäischen Zentralbank (EZB) in der kommenden Woche und angesichts unterschiedlicher Firmenergebnisse hätten sich die Anleger zurückgehalten, hiess es am Markt.</description>
+         <pubDate>Thu, 27 Apr 2023 18:15:10 +0200</pubDate>
+         <guid>https://www.cash.ch/node/574000</guid>
+         <enclosure url="https://www.cash.ch/fp/1200/675/2592/1727/sites/default/files/images/library/six_borse_schweiz_aktien.jpg" type="image/jpeg" length="949745" />
+         <category>News</category>
+      </item>
+      <item>
+         <title>«Eine Kurskorrektur wäre ein spannender Moment, um Aktienpositionen aufzubauen»</title>
+         <link>https://www.cash.ch/news/top-news/eine-kurskorrektur-ware-ein-spannender-moment-um-aktienpositionen-aufzubauen-596555</link>
+         <description>BLKB-Anlagechefin Fabienne Hockenjos-Erni - Für Fabienne Hockenjos-Erni, Anlagechefin der BLKB, bleibt das Marktumfeld volatil. Im Interview sagt sie, welche Aktien für das restliche Jahr in der Pole-Position sind, auf welche Dividendentitel sie setzt und wo Gefahren lauern.</description>
+         <pubDate>Thu, 27 Apr 2023 18:00:01 +0200</pubDate>
+         <guid>https://www.cash.ch/node/573392</guid>
+         <enclosure url="https://www.cash.ch/fp/1200/675/1250/793/sites/default/files/media/field_image/2023-04/fabienne_hockenjos-erni_blkb.jpg" type="image/jpeg" length="2056836" />
+         <category>News</category>
+      </item>
+   </channel>
+</rss>
