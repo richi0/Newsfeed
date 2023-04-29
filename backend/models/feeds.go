@@ -59,9 +59,8 @@ func (f *FeedModel) Create(feed *Feed) (*Feed, error) {
 	if url == "" {
 		return nil, errors.New("url cannot be empty")
 	}
-	exists := f.ByUrl(url)
-	if exists != nil && exists.Url != "" {
-		return nil, errors.New("url must be unique")
+	if f.Exists(url) {
+		return nil, errors.New("feed url must be unique")
 	}
 	f.app.DB.Create(feed)
 	f.app.DB.First(&newFeed, feed.ID)
@@ -94,4 +93,14 @@ func (f *FeedModel) Remove(id string) {
 
 func (f *FeedModel) Drop() {
 	f.app.DB.Migrator().DropTable(&Feed{})
+}
+
+func (f *FeedModel) Exists(url string) bool {
+	var feed Feed
+	var count int64
+	f.app.DB.Model(&feed).Where("url = ?", url).Count(&count)
+	if count > 0 {
+		return true
+	}
+	return false
 }

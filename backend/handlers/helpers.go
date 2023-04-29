@@ -2,6 +2,8 @@ package handlers
 
 import (
 	"encoding/json"
+	"fmt"
+	"io/ioutil"
 	"net/http"
 	"strconv"
 )
@@ -37,4 +39,18 @@ func getQueryParamInt(param string, defaultValue int, r *http.Request) int {
 func getQueryParamString(param string, r *http.Request) string {
 	p := r.URL.Query().Get(param)
 	return p
+}
+
+func fetchFeed(url string, w http.ResponseWriter) ([]byte, error) {
+	res, err := http.Get(url)
+	if err != nil {
+		http.Error(w, fmt.Sprintf("feed fetch failed. %s", err), http.StatusInternalServerError)
+		return nil, err
+	}
+	content, err := ioutil.ReadAll(res.Body)
+	if err != nil {
+		http.Error(w, fmt.Sprintf("could not reed feed body. %s", err), http.StatusInternalServerError)
+		return nil, err
+	}
+	return content, nil
 }

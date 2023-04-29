@@ -2,7 +2,6 @@ package handlers
 
 import (
 	"fmt"
-	"io/ioutil"
 	"net/http"
 	"newsfeed/config"
 	"newsfeed/models"
@@ -41,14 +40,8 @@ func (f *FeedHandlers) CreateByFeedUrl(w http.ResponseWriter, r *http.Request, _
 		http.Error(w, "feed url not provided", http.StatusInternalServerError)
 		return
 	}
-	res, err := http.Get(url)
+	content, err := fetchFeed(url, w)
 	if err != nil {
-		http.Error(w, fmt.Sprintf("feed fetch failed. %s", err), http.StatusInternalServerError)
-		return
-	}
-	content, err := ioutil.ReadAll(res.Body)
-	if err != nil {
-		http.Error(w, fmt.Sprintf("could not reed feed body. %s", err), http.StatusInternalServerError)
 		return
 	}
 	feed, _ := parsers.ParseFeed(content)

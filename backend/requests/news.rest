@@ -23,13 +23,23 @@ content-type: application/json
     "link": "https://www.cash.ch/news/top-news/aktien-schweiz-schluss-smi-nicht-zuletzt-wegen-nestle-wenig-bewegt-595597",
     "description": "Aktienmärkte - Der Schweizer Aktienmarkt hat sich am Montag kaum von der Stelle bewegt. Der Leitindex SMI bewegte sich über weite Strecken hinweg nahe der Nulllinie in einer Spanne von rund 50 Punkten.",
     "pubDate": "Mon, 24 Apr 2023 21:13:08 +0200",
-    "guid": "https://www.cash.ch/node/572434",
+    "guidUrl": "https://www.cash.ch/node/572434",
     "pubDate": "Mon, 24 Apr 2023 21:13:08 +0200",
     "enclosureUrl": "https://www.cash.ch/fp/1200/675/2016/1512/sites/default/files/images/library/six_boerse_schweiz_zuerich_aktien_4.jpg",
     "enclosureType": "image/jpeg",
     "enclosureLength": 2160988,
     "categoryText": "News"
 }
+
+###
+post http://localhost:4000/news/create_by_url?url=http%3a%2f%2frss.cnn.com%2frss%2fedition_world.rss http/1.1
+authorization: basic user:password
+content-type: application/json
+
+###
+post http://localhost:4000/news/create_by_url?url=https%3A%2F%2Fwww.cash.ch%2Ffeeds%2Flatest%2Ftop-news
+authorization: basic user:password
+content-type: application/json
 
 ###
 PUT http://localhost:4000/news/3 HTTP/1.1

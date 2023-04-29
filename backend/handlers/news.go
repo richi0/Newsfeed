@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"newsfeed/config"
 	"newsfeed/models"
+	"newsfeed/parsers"
 	"strconv"
 
 	"github.com/julienschmidt/httprouter"
@@ -25,8 +26,27 @@ func (n *NewsHandlers) Create(w http.ResponseWriter, r *http.Request, _ httprout
 	if err != nil {
 		return
 	}
-	dbNews := n.data.News.Create(&news)
+	dbNews, err := n.data.News.Create(&news)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
 	writeJson(w, dbNews)
+}
+
+func (n *NewsHandlers) CreateByFeedUrl(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+	url := getQueryParamString("url", r)
+	if url == "" {
+		http.Error(w, "feed url not provided", http.StatusInternalServerError)
+		return
+	}
+	content, err := fetchFeed(url, w)
+	if err != nil {
+		return
+	}
+	_, news := parsers.ParseFeed(content)
+	dbFeed := n.data.News.CreateBulk(news)
+	writeJson(w, dbFeed)
 }
 
 func (n *NewsHandlers) Read(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
