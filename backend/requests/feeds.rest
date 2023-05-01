@@ -12,6 +12,9 @@ GET http://localhost:4000/feeds?limit=15&offset=1
 ###
 GET http://localhost:4000/feeds?limit=5&offset=2
 
+### feed by id
+GET http://localhost:4000/feeds/1
+
 ###
 POST http://localhost:4000/feeds HTTP/1.1
 Authorization: Basic user:password

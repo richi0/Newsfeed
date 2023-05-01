@@ -47,6 +47,7 @@ type Feed struct {
 	TextInputLink          string
 	SkipHours              string
 	SkipDays               string
+	News                   []News
 	LastFetched            time.Time
 	CreatedAt              time.Time
 	UpdatedAt              time.Time
@@ -76,9 +77,15 @@ func (f *FeedModel) Read(limit int, offset int) []*Feed {
 func (f *FeedModel) ByUrl(url string) *Feed {
 	var feed Feed
 	err := f.app.DB.Where("url = ?", url).First(&feed).Error
-	if errors.Is(err, gorm.ErrRecordNotFound) {
+	if err != nil {
 		return nil
 	}
+	return &feed
+}
+
+func (f *FeedModel) ByID(id string) *Feed {
+	var feed Feed
+	f.app.DB.First(&feed, id)
 	return &feed
 }
 

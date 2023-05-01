@@ -29,6 +29,7 @@ type News struct {
 	SourceUrl       string
 	SourceText      string
 	PubDate         string
+	FeedID          uint
 	CreatedAt       time.Time
 	UpdatedAt       time.Time
 	DeletedAt       gorm.DeletedAt
@@ -48,8 +49,9 @@ func (n *NewsModel) Create(news *News) (*News, error) {
 	return &newNews, nil
 }
 
-func (n *NewsModel) CreateBulk(news []*News) []*News {
+func (n *NewsModel) CreateBulk(news []*News, feedID uint) []*News {
 	for _, item := range news {
+		item.FeedID = feedID
 		n.Create(item)
 	}
 	return news
@@ -68,6 +70,21 @@ func (n *NewsModel) ByUrl(url string) *News {
 		return nil
 	}
 	return &news
+}
+
+func (n *NewsModel) ByID(id string) *News {
+	var news News
+	err := n.app.DB.First(&news, id).Error
+	if errors.Is(err, gorm.ErrRecordNotFound) {
+		return nil
+	}
+	return &news
+}
+
+func (n *NewsModel) ByFeedID(id string) []News {
+	var news []News
+	n.app.DB.Where("feed_id = ?", id).Find(&news)
+	return news
 }
 
 func (n *NewsModel) Update(news *News) *News {

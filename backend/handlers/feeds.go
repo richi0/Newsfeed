@@ -61,6 +61,16 @@ func (f *FeedHandlers) Read(w http.ResponseWriter, r *http.Request, _ httprouter
 	writeJson(w, dbFeeds)
 }
 
+func (f *FeedHandlers) ReadById(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	id := ps.ByName("id")
+	if id == "" {
+		http.Error(w, "feed id not provided", http.StatusInternalServerError)
+		return
+	}
+	feed := f.data.Feeds.ByID(id)
+	writeJson(w, feed)
+}
+
 func (f *FeedHandlers) Update(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	var feed models.Feed
 	err := readJson(w, r, &feed)
