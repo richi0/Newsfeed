@@ -95,7 +95,7 @@ func (f *FeedModel) Update(feed *Feed) *Feed {
 }
 
 func (f *FeedModel) Remove(id string) {
-	f.app.DB.Delete(&Feed{}, id)
+	f.app.DB.Unscoped().Delete(&Feed{}, id)
 }
 
 func (f *FeedModel) Drop() {

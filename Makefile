@@ -5,7 +5,10 @@ POSTGRES_NAME=$(APP_NAME)-postgres
 be_dev: postgres_start
 	cd backend;	go run .
 be_test:
-	cd backend;	go test ./... -v
+	cd backend;	go test ./... -v -coverpkg=./...
+be_coverage:
+	cd backend;	go test ./... -v -coverpkg=./... -coverprofile=coverage.out
+	cd backend; go tool cover -html=coverage.out
 fe_dev:
 	cd frontend; npm run dev
 fe_install:
