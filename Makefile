@@ -3,11 +3,11 @@ APP_NAME=newsfeed
 POSTGRES_NAME=$(APP_NAME)-postgres 
 
 be_dev: postgres_start
-	cd backend;	go run .
+	cd backend; go run .
 be_test:
-	cd backend;	go test ./... -v -coverpkg=./...
+	cd backend; go test ./... -v -coverpkg=./... -p 1
 be_coverage:
-	cd backend;	go test ./... -v -coverpkg=./... -coverprofile=coverage.out
+	cd backend; go test ./... -v -coverpkg=./... -coverprofile=coverage.out -p 1
 	cd backend; go tool cover -html=coverage.out
 fe_dev:
 	cd frontend; npm run dev

@@ -93,7 +93,7 @@ func (n *NewsModel) Update(news *News) *News {
 }
 
 func (n *NewsModel) Remove(id string) {
-	n.app.DB.Delete(&News{}, id)
+	n.app.DB.Unscoped().Delete(&News{}, id)
 }
 
 func (n *NewsModel) Drop() {
