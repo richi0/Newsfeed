@@ -1,5 +1,6 @@
-import { minutesAgo } from "@/shared/time";
+import Image from "next/image";
 import { ImageCardProps } from "./types";
+import { timeAgo } from "@/shared/time";
 
 const ImageCard = ({
   title,
@@ -8,18 +9,18 @@ const ImageCard = ({
   guidUrl,
 }: ImageCardProps) => {
   return (
-    <div className="w-44 h-60 relative m-3">
-      <a href={guidUrl} target="_blank">
-        <img
+    <div className="m-3">
+      <a href={guidUrl} target="_blank" className="flex gap-3">
+        <Image
           src={enclosureUrl}
           alt="title image"
-          className="w-full h-full object-cover rounded-md"
+          className="rounded-md"
+          width={100}
+          height={100}
         />
-        <span className="flex flex-col absolute bottom-1 left-2">
-          <span className="text-white text-lg font-bold">{title}</span>
-          <span className="text-gray-300 text-sm">
-            {minutesAgo(createdAt) + " mins ago"}
-          </span>
+        <span className="flex flex-col bottom-1 left-2 w-32">
+          <span className="text-lg font-bold">{title}</span>
+          <span className="text-gray-300 text-sm">{timeAgo(createdAt)}</span>
         </span>
       </a>
     </div>
