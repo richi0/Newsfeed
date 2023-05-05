@@ -1,6 +1,7 @@
 export type ImageCardProps = {
   title: string;
-  guidUrl: string;
+  link: string;
   enclosureUrl: string;
-  createdAt: string;
+  pubDate: string;
+  source: string;
 };

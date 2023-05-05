@@ -1,6 +1,7 @@
-import Layout from "@/components/Layout";
 import ImageCard from "@/components/NewsCard/ImageCard";
+import Layout from "@/components/Layout";
 import { News } from "@/shared/types";
+import { getHostName } from "../shared/helpers";
 
 type HomeProps = {
   content: News[];
@@ -21,10 +22,12 @@ export default function Home({ content }: HomeProps) {
         {content.map((news) => {
           return (
             <ImageCard
+              key={news.ID}
               title={news.Title}
-              guidUrl={news.GuidUrl}
+              link={news.Link}
               enclosureUrl={news.EnclosureUrl}
-              createdAt={news.CreatedAt}
+              pubDate={news.PubDate}
+              source={getHostName(news.Link)}
             />
           );
         })}
